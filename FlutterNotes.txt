@@ -1,0 +1,1207 @@
+                                         Flutter
+
+What is Flutter?
+
+ Flutter is UI framework used to build user interface application for Mobile,Web,Desktop,Embed.
+
+Flutter for Mobile Apps Development:
+
+Mobile Apps can be built in various ways
+
+1.Native Apps
+   -Major Mobile Platforms
+     -Android
+     -IOS
+if i am building app such as ecommerce apps, i have build for both platforms indendently.
+
+2.Mobile Web App
+    Web applications are accessed inside mobile browsers
+
+3.Hybrid Mobile Application
+   In 2010,The mobile conference held where ideas were proposed like how to create single code base for multi platform.
+
+  One App for multiple devices and operating system.
+s
+Thats where hybrid mobile apps were created.
+   W3C Stack -  HTML 5, CSS 3, Javascript
+  
+.............................................................................................
+				Dart Programming language
+ 
+  
+What is Dart?
+The Dart language is type safe; it uses static type checking to ensure that a variable’s value always matches the variable’s static type. Sometimes, this is referred to as sound typing.
+
+Dart is Object oriented and functional style language, General Purpose Programming language.
+
+Dart language syntax is derived from c,c++,java,js,Kotlin,Scala
+
+
+Dart setup:
+
+1.Dart SDK
+2.IDE Setup
+
+Please follow the official Website
+https://dart.dev/tools/jetbrains-plugin
+
+
+Dart code:
+
+FileName.dart
+
+Hello.dart
+
+every dart program has entry called main function.
+
+//hello world : comments
+
+void main() {
+  print("Hello Dart!!");
+}
+
+Without void also valid
+
+main() {
+  print("Hello Dart!!");
+}
+
+How to run this code into commandline
+
+E:\session\IBS\2022\dartdemos> dart bin/Hello.dart
+.............................................................................................
+Learning Path:
+
+1.Dart Language features
+2.Object oriented Programming
+3.functions and functional style code
+4.collections
+5.expection handling
+
+
+1.Dart Language features:
+
+Type system and variable declaration
+
+Dart is static or strongly typed language, meaning that type of variable is vertified during compile time.
+
+Data types supported by dart
+
+Built in types:
+
+Numbers (int, double)
+Strings (String)
+Booleans (bool)
+Lists (List, also known as arrays)
+Sets (Set)
+Maps (Map)
+Runes (Runes; often replaced by the characters API)
+Symbols (Symbol)
+The value null (Null)
+
+Reference Types:
+
+Any class Types. - Employee,Order
+
+Object: The superclass of all Dart classes except Null.
+
+Future and Stream: Used in asynchrony support.
+
+Iterable: Used in for-in loops and in synchronous generator functions.
+Never: Indicates that an expression can never successfully finish evaluating. Most often used for functions that always throw an exception.
+dynamic: Indicates that you want to disable static checking. Usually you should use Object or Object? instead.
+void: Indicates that a value is never used. Often used as a return type.
+
+How to declare variable?
+
+Type variableName=literal
+  int a = 10;
+  print(a);
+
+var variableName=literal
+ 
+ 
+main() {
+  // Built in types
+  int a = 10;
+  print(a);
+  //a ="Hello"; here not possible
+  //Type inference
+  var b = 10;
+  print(b);
+  // b="Hello" // here also not possible.
+  double percentage = 93.4;
+  var percent = 82.533;
+  double exponents = 1.42e5;
+// Boolean
+  bool isValid = true;
+  var isAlive = false;
+}
+
+
+Recommendation :  use always var syntax.
+
+Every thing in Dart mostly objects including data types
+
+main() {
+  // Built in types
+  int a = 10;
+  print(a);
+  print(a.floor());
+  //a ="Hello"; here not possible
+  //Type inference
+  var b = 10;
+  print(b);
+  // b="Hello" // here also not possible.
+  double percentage = 93.4;
+  print(percentage.round());
+  var percent = 82.533;
+  double exponents = 1.42e5;
+// Boolean
+  bool isValid = true;
+  var isAlive = false;
+}
+
+...
+default values 
+
+main(){
+  int a;
+  print(a);
+}
+here there is compile time error , variable must have been initialized
+
+
+ int a = null;
+
+here type of "null" would be Null
+
+int a = null; //here type mismatch.
+
+you can even declare dynamic typed language syntax, just declaring variable by using var without initalization.
+
+  var a;
+  print(a);
+  a = 90;
+  print(a);
+  a = "hello";
+  print(a);
+.............................................................................................
+String interpolation:
+
+
+main() {
+  var s1 = 'Single';
+  var s2 = "Double";
+  var s3 = 'It\'s easy';
+  var s4 = "It's easy";
+  print(s1 + s2 + s3 + s4);
+
+  var firstName = "Subramanian";
+  var lastName = "Murugan";
+  var age = 18;
+  //string interpolation
+  print("Name $firstName $lastName  age is $age");
+}
+............................................................................................
+final and const keywords:
+..........................
+
+final and const are used to declare constants.
+values cant be modified 
+
+final variableName=value
+
+main() {
+  final i = 12;
+  //i=90;
+}
+
+main() {
+  //final i = 12;
+  final i;
+  print("final i $i");
+  //i=90;
+}
+Error: Final variable 'i' must be assigned before it can be used.
+  print("final i $i");
+
+
+const;
+
+ const k=90;
+  print("Constants k $k");
+  k=9088;
+ Error: Can't assign to the const variable 'k'.
+  k=9088;
+  ^
+
+...
+ const k;
+  print("Constants k $k");
+ The const variable 'k' must be initialized.
+Try adding an initializer ('= expression') to the declaration.
+  const k;
+
+...........................................................................................
+				const vs final - lazy and eager
+...........................................................................................
+
+ final variable can only  be set once and it is initalized when  accessed : lazy
+
+ const variable implicitly final but it is  a compile-time constant. : eager
+   it is intialized during compile time.
+
+
+instance variable can be final not constant
+if you want constant inside class, make it static const
+...........................................................................................
+Operators:
+ Most of the operators in dart derived from "c" and also some extra opeators
+
++,*, /, ~/(int result),%, ++,--
+
+>,<,<=,>=,==.!=
+
+is -  True if the object has the specified type
+is! - false if the object has the secified type.
+
+Assigment:
+= var a =10
+
+??= - Assign the value only if the variable is null.
+
+logical operators
+&& , || , !
+
+Conditional Expressions:
+
+condition ? exp1: expr2
+
+expr1 ?? expr2
+  returns expr1 if non null, else expr2
+main(){
+  //??
+  var a;
+  print(a);
+ // a="Hello";
+  var res = a ?? "Nothing";
+  print(res);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+					Nullable Type
+
+? - operator allows variable can have null with named types
+
+String name = null ; // error
+
+String? name = null // no error.
+
+	//nullable type
+  String? maybeString = null; // Or not!
+  print(maybeString ?? "Foo");
+  if (maybeString == null) {
+    print("another foo");
+  }
+
+  double? b = null;
+  print(maybeString ?? "Foo");	
+
+............................................................................................
+				Non Null Types
+
+Darts made all types non-nullable by default. 
+Null Will not be in the core type hierachy.
+
+If we didn’t think null was useful at all, we could stop here. But null is useful, so we still need a way to handle it.
+
+if you  need a variable to accept both null and value Null | Value
+
+  a = String | Null  - Union Types
+
+String?  a = "" | null
+..............................................................................................
+
+Control Structures:
+....................
+if..else
+if..else
+switch case
+
+void main() {
+  // IF and ELSE Statements
+  var salary = 15000;
+
+  if (salary > 20000) {
+    print("You got promotion. Congratulations !");
+  } else {
+    print("You need to work hard !");
+  }
+
+  // IF ELSE IF Ladder statements
+  var marks = 70;
+
+  if (marks >= 90 && marks < 100) {
+    print("A+ grade");
+  } else if (marks >= 80 && marks < 90) {
+    print("A grade");
+  } else if (marks >= 70 && marks < 80) {
+    print("B grade");
+  } else if (marks >= 60 && marks < 70) {
+    print("C grade");
+  } else if (marks > 30 && marks < 60) {
+    print("D grade");
+  } else if (marks >= 0 && marks < 30) {
+    print("You have failed");
+  } else {
+    print("Invalid Marks. Please try again !");
+  }
+}
+...
+Switch case:
+void main() {
+  // Switch Case Statements: Applicable for only 'int' and 'String'
+
+  String grade = 'A';
+
+  switch (grade) {
+    case 'A':
+      print("Excellent grade of A");
+      break;
+
+    case 'B':
+      print("Very Good !");
+      break;
+
+    case 'C':
+      print("Good enough. But work hard");
+      break;
+
+    case 'F':
+      print("You have failed");
+      break;
+    default:
+      print("Invalid Grade");
+  }
+}
+..........................................................................................
+
+Loops:
+for - regular iterator 
+for..in - object property iterator
+while,dowhile
+
+void main() {
+  // FOR Loop
+  // WAP to find the even numbers between 1 to 10
+
+  for (int i = 1; i <= 10; i++) {
+    if (i % 2 == 0) {
+      print(i);
+    }
+  }
+
+  // for ..in loop
+  List planetList = ["Mercury", "Venus", "Earth", "Mars"];
+
+  for (String planet in planetList) {
+    print(planet);
+  }
+
+  // var i = 1;
+  // while (i <= 10) {
+  //   if (i % 2 == 0) {
+  //     print(i);
+  //   }
+  //
+  //   i++;
+  // }
+  int i = 1;
+
+  do {
+    if (i % 2 == 0) {
+      print(i);
+    }
+
+    i++;
+  } while (i <= 10);
+
+  ///
+  // BREAK keyword
+  // Using Labels
+  // Nested FOR Loop
+
+  myOuterLoop:
+  for (int i = 1; i <= 3; i++) {
+    innerLoop:
+    for (int j = 1; j <= 3; j++) {
+      print("$i $j");
+
+      if (i == 2 && j == 2) {
+        break myOuterLoop;
+      }
+    }
+  }
+}
+.............................................................................................
+			  functions and Functinal Style Programming
+.............................................................................................
+
+Functional Programming:
+=>Functions are first class citizens. Functions are literals like numbers and strings.
+  Since it is value, we can store into a variable, pass,return from another functions.
+
+=>Dart is a true object-oriented language, so even functions are objects and have a type, Function. This means that functions can be assigned to variables or passed as arguments to other functions. You can also call an instance of a Dart class as if it were a function
+
+Function itself is a type.
+
+
+//entry function .
+
+main() {
+  //function calling
+  sayHello();
+  sayHai();
+}
+//other functions
+void sayHello() {
+  print("Hello");
+}
+//short cut
+sayHai(){
+  print("Hai");
+}
+............................................................................................
+
+Function Parameters:
+....................
+ 1.Named Parameters
+ 2. Required Parameters
+ 3. Optional Positional Parameters
+
+
+Required Parameters:
+  You must pass values.
+
+main() {
+  sayHello("Subramanian", "Hello");
+  
+}
+sayHello(String name, String message) {
+  print("$message $name");
+}
+Required Parameters with null or value:
+  ?
+main() {
+  sayHai(null, null);
+  sayHai("Ram", "Welcome");
+
+}
+
+sayHai(String? name,String? message) {
+  print("$message $name");
+}
+
+
+Named Parameters:
+ Are optional parameters
+
+When defining a function, use {param1, param2, …} to specify named parameters:
+When calling a function, you can specify named parameters using paramName: value. For example:
+enableFlags(bold: true, hidden: false);
+
+eg:
+main() {
+  add(d: 10, b: 30, a: 150, c: 10);
+  add(d: 10);
+}
+add({int? a, int? b, int? c, int? d}) {
+  print("a $a  b $b c $c d $d ");
+}
+.....................
+
+Optional Named Parameters but dont want to be  null
+
+main() {
+  //no parameters means default parameters are intialized
+  enableFlags();
+  enableFlags(hidden: true);
+  enableFlags(bold: true);
+  enableFlags(hidden: true, bold: true);
+}
+void enableFlags({bool bold = false, bool hidden = false}) {
+  print("bold $bold hidden $hidden");
+}
+
+Named Optional parameters and Required Parameters:
+..........................................
+
+setValue(child: "child");
+setValueV2(child: "childv2");
+
+
+void setValue({String ? key, required String child}) {
+  print("Key $key Child $child");
+}
+
+void setValueV2({String key="default Key", required String child}) {
+  print("Key $key Child $child");
+}
+..............................................................................................
+Optional positional parameters
+Wrapping a set of function parameters in [] marks them as optional positional parameters
+
+say("Ram", "Hello");
+  say("Ram", "Hello", "Phone");
+  sayV2("ram", "hai");
+  sayV3("ram", "hai");
+
+//Optional Positional Parameters : null
+say(String name, String msg, [String? device]) {
+  print('Name $name Message $msg device $device');
+}
+
+//default value
+sayV2(String name, String msg, [String device = "Mobile"]) {
+  print('Name $name Message $msg device $device');
+}
+//multi optional parameter
+sayV3(String name, String msg,
+    [String device = "Mobile",
+    int deviceHeight = 10,
+    double deviceWidth = 5.5]) {
+  print('Name $name Message $msg device $device $deviceHeight $deviceWidth');
+}
+...........................................................................................
+				Functions as first-class objects
+					Higher order functions
+
+
+
+What can be parameter?
+ Parameter can be numbers,strings,objects...
+ Parameter can also be "functions" - Function itself is value.
+
+if function is passed as arg or return value, that is called higher order function.
+
+main() {
+  printElement(10);
+  printElementAsFun(greet);
+}
+greet() {
+  print("Greet");
+}
+printElement(int a) {
+  print(a);
+}
+
+printElementAsFun(Function myfun) {
+  myfun();
+}
+
+passed Function takes arg
+main() {
+  printElement(10);
+  printElementAsFun(greet);
+  printElementAsFunV1(say);
+}
+
+greet() {
+  print("Greet");
+}
+
+// say({String? name, String? msg}) {
+//   print("Name $name Msg $msg");
+// }
+say(String name, String msg) {
+  print("Name $name Msg $msg");
+}
+
+printElement(int a) {
+  print(a);
+}
+
+printElementAsFun(Function myfun) {
+  myfun();
+}
+printElementAsFunV1(Function myfun) {
+  myfun("Subramanian","Welcome");
+}
+..........................................................................................
+Anonymous functions / lambda /closure:
+
+Most of the functions are named like main,say,add.
+You can also create a nameless function called an anonymous function, or sometimes a lambda or closure.
+
+([[Type] param1[, …]]) {
+  codeBlock;
+};
+
+Functions are literals, so that we can store into a variable.
+
+Functions literals can be declared inside another function 
+
+Function myfun = () {
+
+}
+
+var myfun = () {
+
+}
+main() {
+  int a = 10;
+  Function hai = () {
+    print("hai");
+  };
+  hai();
+  var hello =() {
+    print("hello");
+  };
+  hello();
+  //parameters
+  var add =(int a,int b) {
+    int res = a + b;
+    print("res $res");
+  };
+  add(10,10);
+}
+
+Arrow functions:
+................
+main() {
+  int a = 10;
+  Function hai = () {
+    print("hai");
+  };
+  hai();
+  var hello = () {
+    print("hello");
+  };
+  hello();
+  //parameters
+  var add = (int a, int b) {
+    int res = a + b;
+    print("res $res");
+  };
+  add(10, 10);
+  //arrow
+  // var greet = () {
+  //   print("hello");
+  // };
+  var greet = () => print("hello Lambda");
+  print("hello");
+  greet();
+  //passing lambda as parameter
+  greetMe(greet);
+  //inline lambda
+  greetMe(() => print("In line  Lambda"));
+}
+
+// greetMe(Function greeter) {
+//   greeter();
+// }
+greetMe(var greeter) {
+  greeter();
+}
+..............................................................................................
+Inner functions or Nested Functions:
+...................................
+
+Functions can be defined inside another functions
+
+//function within function
+
+main() {
+  counter();
+}
+
+counter() {
+  print("counter function");
+  inc() {
+    print("inc function");
+  }
+  inc();
+}
+
+Closure:
+1.A closure is a function that has access to the parent scope, even after the scope has closed.
+ inner function access outer function variable, which is bound to outter scope
+
+2.A Closure is a function that has access to variables in its lexical scope, even when the function is used out side of the original scope.
+
+
+//function within function
+
+main() {
+  counter();
+  //closure
+  String message = "Dart";
+
+  showMessage(){
+    //access the outer function variable
+    message = "Dart is awesome";
+    print(message);
+  }
+  showMessage();
+  //talk function returns function : closure
+  Function talk(){
+    String message ='hai';
+    //we return function
+    say(){
+      message ='Hello';
+      print(message);
+    };
+    return say;
+  }
+  //call talk
+  var myvar=talk();
+  myvar();
+  myvar();
+
+  var inc = makeAdder(10);
+  print(inc(2));
+  print(inc(27));
+  print(inc(24));
+  print(inc(22));
+
+}
+//here addBy is local variableof makeAdder which is used by lambda: closure
+Function makeAdder(int addBy) {
+  return (int i) => addBy + i; //return function - lambda
+}
+counter() {
+  print("counter function");
+  inc() {
+    print("inc function");
+  }
+  inc();
+}
+
+
+Function Return values:
+
+Can be any thing including functions
+
+main() {
+  print(getValue());
+  print(getValueV1());
+
+  //lambda
+  var greet = () => "Hello";
+  print(greet());
+  var add=(int a, int b) => a + b;
+  print(add(10,10));
+}
+
+int getValue() {
+  return 10;
+}
+
+//type inference
+getValueV1() {
+  return 10;
+}
+..............................................................................................
+			 Object oriented Programming and implementation
+..............................................................................................
+How to declare class, how declare instance variables,methods,how to create Objects.
+
+//declare class
+
+class Employee {
+  //fields
+  int? id = 1;
+  String? name ="default";
+  double? salary;
+  //getters/setters
+  //constructors
+  //functions
+
+}
+main(){
+  //create instance;
+  Employee employee = Employee(); // will invoke default constructor
+  //access properties via getters
+  //?. called safe navigation operator
+  print("Id ${employee.id} Name ${employee.name} Salary ${employee?.salary?.toInt() ?? 0.0}");
+  
+  var emp =Employee();
+  emp.id =900; //setters
+  
+}
+.............................................................................................
+
+Methods
+
+
+class TodoService {
+  //methods
+  void addTodo(){
+    print("todos");
+  }
+
+}
+main(){
+  var todo= TodoService();
+  todo.addTodo();
+}
+.............................................................................................
+				State initalization
+.............................................................................................
+
+1.inside class
+ 
+2.outside class using reference variable
+3.via constructors
+
+Constructors:
+// 1. Default Constructor
+// 2. Parameterized Constructor
+// 3. Named Constructor
+// 4. Constant Constructor
+
+
+Default and Named Constructors:
+
+class Student {
+  int id = -1;
+  String? name;
+
+  // Student() {
+  //   print("default no arg constuctor");
+  // }
+  //arg
+  // Student(int id, String name) {
+  //   this.id = id;
+  //   this.name = name;
+  // }
+  //short cut
+  Student(this.id, this.name);
+}
+
+main() {
+  var student1 = Student(12, "Subramanian");
+  print("${student1.id} ${student1.name}");
+}
+
+Constructor Name:
+=>constructor name can be name of the class.
+=>Dart defines custom Names also
+
+class Student {
+  int id = -1;
+  String? name;
+
+  //constructor with Name => Named constructors
+  Student.create(this.id, this.name);
+
+}
+
+main() {
+ 
+  var student2 = Student.create(100, "Murugan");
+  print("${student2.id} ${student2.name}");
+
+}
+
+constant constructors:
+......................
+  Immutable Objects : objects are created once we cant modify.
+  
+If your class produces objects that never change, you can make these objects compile-time constants. To do this, define a const constructor and make sure that all instance variables are final.
+
+
+class Point {
+  static const Point origin = Point(0, 0);
+
+  final double x, y;
+
+  const Point(this.x, this.y);
+}
+
+
+instance variable can be final not constant
+if you want constant inside class, make it static const
+
+
+//constant constructors
+class Point {
+  static const Point origin = Point(0, 0);
+
+  final double x, y;
+
+  //const constructors , makes immutable
+  const Point(this.x, this.y);
+}
+ var a = const Point(1, 1);
+  var b = const Point(1, 1);
+  print(a ==b);
+
+
+
+............
+Named constructors outside initalized:
+
+const int xOrigin = 0;
+const String yOrigin = "outside";
+class Student {
+  int id = -1;
+  String? name;
+  //constructors with Name but initzlied outside
+  Student.origin(): id = xOrigin,
+              name = yOrigin;
+
+}
+.............................................................................................
+				 Setters and Getters
+
+Dart offers Setters and getters by default, if you want to change the behaviour,you can over ride setters and getters
+
+class Student {
+  String name="";        // Instance Variable with default Getter and Setter
+  double _percent=0;    // Private Instance Variable for its own library
+  // Instance variable with Custom Setter
+  void set percentage(double marksSecured) => _percent = (marksSecured / 500) * 100;
+  // Instance variable with Custom Getter
+  double get percentage => _percent;
+}
+main(){
+  var student = Student();
+  //calling default setter
+  student.name = "Subramanian";
+  print(student.name); // default getter
+  //calling custom setter and getter
+  student.percentage =400.89;
+  print(student.percentage);
+  //student._percent=90.0;
+}
+............................................................................................
+				 Hierachy
+..........................................................................................
+
+IS-A hierachy :  class ,abstract class,interface(class)
+
+
+class Animal {
+  String color="";
+  void eat() {
+    print("Eat !");
+  }
+}
+class Dog extends Animal {      // Dog is Child class or sub class, Animal is super or parent class
+  String breed="";
+  void bark() {
+    print("Bark !");
+  }
+  @override
+  void eat() {
+    // TODO: implement eat
+    print("dog eats");
+  }
+}
+class Cat extends Animal {      // Cat is Child class or sub class, Animal is super or parent class
+
+  int age=0;
+
+  void meow() {
+    print("Meow !");
+  }
+}
+
+abstract class Doer {
+  // Define instance variables and methods...
+  void doSomething(); // Define an abstract method.
+}
+class EffectiveDoer extends Doer {
+  void doSomething() {
+    // Provide an implementation, so the method is not abstract here...
+    print("Effective Door");
+  }
+}
+//interfaces the class can be treated interfaces
+class Person {
+  // In the interface, but visible only in this library.
+  final String _name;
+  // Not in the interface, since this is a constructor.
+  Person(this._name);
+  // In the interface.
+  String greet(String who) => 'Hello, $who. I am $_name.';
+}
+class Employee implements Person {
+  @override
+  // TODO: implement _name
+  String get _name => '';
+
+  @override
+  String greet(String who) {
+     return 'Greet';
+  }
+  
+}
+
+main(){
+  var dog = Dog();
+  dog.color="Brown";
+  dog.eat();
+  var cat  = Cat();
+  cat.age=90;
+  cat.meow();
+
+  Doer door = EffectiveDoer();
+  door.doSomething();
+}
+............................................................................................
+
+HAS-A relationship:
+
+
+
+class Order {
+   Product product;
+   //has-a
+   Order.create(this.product);
+}
+class Product {
+   Product();
+   findProduct(){
+     return "product";
+   }
+}
+main(){
+  var order = Order.create(Product());
+  print(order.product.findProduct());
+}
+.........................................................................................
+				Enums
+.........................................................................................
+
+
+enum Color { red, green, blue }
+
+main(){
+  print(Color.blue.name);
+}
+.............................................................................................
+			    Collections
+.....................
+
+main(){
+  //List literal : ordered Collections  : ordered by index
+  List<int> ints= [1,2,3,4];
+  ints.forEach((element) {print(element);});
+  var list = [
+    'Car',
+    'Boat',
+    'Plane',
+  ];
+  var constantList = const [1, 2, 3];
+  //Set literal : Un Ordered Collections
+  var halogens = {'fluorine', 'chlorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+  halogens.forEach((element) { print(element);});
+
+  //Map : key-value pair collection
+  var gifts = {
+    // Key:    Value
+    'first': 'partridge',
+    'second': 'turtledoves',
+    'fifth': 'golden rings'
+  };
+  gifts.forEach((key, value) {
+    print("$key $value");
+  });
+  var nobleGases = {
+    2: 'helium',
+    10: 'neon',
+    18: 'argon',
+  };
+}
+..............................................................................................
+				Exception Handling
+............................................................................................
+void main() {
+
+  print("CASE 1");
+  // CASE 1: When you know the exception to be thrown, use ON Clause
+  try {
+    int result = 12 ~/ 0;
+    print("The result is $result");
+  } on IntegerDivisionByZeroException {
+    print("Cannot divide by Zero");
+  }
+
+  print(""); print("CASE 2");
+  // CASE 2: When you do not know the exception use CATCH Clause
+  try {
+    int result = 12 ~/ 0;
+    print("The result is $result");
+  } catch (e) {
+    print("The exception thrown is $e");
+  }
+
+  print(""); print("CASE 3");
+  // CASE 3: Using STACK TRACE to know the events occurred before Exception was thrown
+  try {
+    int result = 12 ~/ 0;
+    print("The result is $result");
+  } catch (e, s) {
+    print("The exception thrown is $e");
+    print("STACK TRACE \n $s");
+  }
+
+  print(""); print("CASE 4");
+  // CASE 4: Whether there is an Exception or not, FINALLY Clause is always Executed
+  try {
+    int result = 12 ~/ 3;
+    print("The result is $result");
+  } catch (e) {
+    print("The exception thrown is $e");
+  } finally {
+    print("This is FINALLY Clause and is always executed.");
+  }
+
+  print(""); print("CASE 5");
+  // CASE 5: Custom Exception
+  try {
+    depositMoney(-200);
+  } catch (e) {
+    print(e);
+  } finally {
+    // Code
+  }
+}
+
+class DepositException implements Exception {
+  String errorMessage() {
+    return "You cannot enter amount less than 0";
+  }
+}
+
+void depositMoney(int amount) {
+  if (amount < 0) {
+    throw new DepositException();
+  }
+}
+..............................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
