@@ -575,7 +575,7 @@ sayV3(String name, String msg,
 }
 ...........................................................................................
 				Functions as first-class objects
-					Higher order functions
+				    Higher order functions
 
 
 
@@ -1183,6 +1183,479 @@ void depositMoney(int amount) {
   }
 }
 ..............................................................................................
+				Flutter
+
+
+Flutter apps are composed as "tree".
+
+Fluter apps are purely UI.
+ Design is more important-  Look and feel
+
+Flutter uses by default Material Design from the google.
+
+Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web.
+
+Widigets are classified into two category
+  Material Design  - android,web
+  Cupertino Design -IOS Design framework
+..............................................................................................
+
+Flutter Setup:
+
+Windows/Mac/Linux
+
+.............................................................................................
+
+Flutter Project Creation:
+.........................
+
+Via Command line
+Via editors  - android studio / vs code.
+
+..............................................................................................
+
+Packages:
+ Resulable libs provided by dart and flutter , third party.
+
+YOu can install,create and publish using dart pub command
+
+
+How to use the packages inside flutter/dart application.
+
+import 'package:js/js.dart' as js;
+import 'package:intl/intl.dart';
+
+
+Flutter offers lot of packages
+
+import 'package:flutter/material.dart'
+
+Every flutter must have entry Point
+
+void main(){
+
+}
+
+Every flutter app must import core flutter package
+
+import 'package:flutter/material.dart'
+
+Every flutter app is collection of objects called "tree",In the tree, there must be Root Object.
+
+Root Object itself is widget , that would be like container widget.
+
+
+Like in html
+
+  <div>
+      <div>
+	 <div></div>
+     </div>
+  </div>
+
+In react, there is root Component, which need to inserted into Target(browser/Mobile)
+
+class App extends React.Component {
+   
+   render(){ 
+     return <h1>Hello</h1>
+   }
+  
+}
+
+ReactDOM.render(<App/>,document.getElementById('root'));
+
+
+In flutter:
+
+ReactDOM.render  == runApp()
+
+
+How to create widget ?
+
+class App extends StatelessWidget {
+    Widget build(BuildContext context){
+	return Widget()
+    }
+}
+
+Here StatelessWidget === React.Component
+
+build ==== render Method in React.
+..............................................................................................
+
+//bring all flutter features
+import 'package:flutter/material.dart';
+
+//Entry function which lanuches an app.
+void main(){
+  //lanuch the Root Widget
+   runApp(App());
+}
+//widget creation
+class App extends StatelessWidget {
+  //build renders UI Widget
+   @override
+  Widget build(BuildContext context) {
+     //render hello World Text
+     return Text("Hello Flutter",textDirection: TextDirection.rtl);
+  }
+}
+
+when you lanuch this inside device, you can see output in the left most cornor. There is no proper alignment.
+
+What if i want with proper alignment, in react we write styles but in flutter who offers ready made widgets which takes care of alingments(common).
+
+
+MaterialApp Widget:
+class App extends StatelessWidget {
+  //build renders UI Widget
+   @override
+  Widget build(BuildContext context) {
+     //render hello World Text inside MaterialApp Widget(which is container for material apps)
+     return const MaterialApp(home: Text("Hello Flutter"));
+  }
+}
+...
+
+Adding AppBar,FloatActionButton
+
+class App extends StatelessWidget {
+  //build renders UI Widget
+  @override
+  Widget build(BuildContext context) {
+    //render hello World Text inside MaterialApp Widget(which is container for material apps)
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+        floatingActionButton:  const FloatingActionButton(onPressed: null),
+      ),
+      debugShowCheckedModeBanner: true,
+    );
+  }
+}
+
+Adding Text on the Screen:
+...........................
+class App extends StatelessWidget {
+  //build renders UI Widget
+  @override
+  Widget build(BuildContext context) {
+    //render hello World Text inside MaterialApp Widget(which is container for material apps)
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+
+        ),
+        floatingActionButton:  const FloatingActionButton(onPressed: null),
+        body: const Center(child: Text("Welcome to Flutter")),
+      ),
+      debugShowCheckedModeBanner: true,
+    );
+  }
+}
+.............................................................................................
+
+Customizing FloatingActionButton:
+class App extends StatelessWidget {
+  //build renders UI Widget
+  @override
+  Widget build(BuildContext context) {
+    //render hello World Text inside MaterialApp Widget(which is container for material apps)
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+
+        ),
+        floatingActionButton:  const FloatingActionButton(onPressed: null,tooltip: 'Add', child: Icon(Icons.add_comment)),
+        body: const Center(child: Text("Welcome to Flutter")),
+      ),
+      debugShowCheckedModeBanner: true,
+    );
+  }
+}
+.............................................................................................
+How to modularize the widgets.
+
+what if i am adding more and more widgets , which creates complexity.
+what if i want to resue the same widget across the app.
+
+For every widget, build method is called
+
+//bring all flutter features
+import 'package:flutter/material.dart';
+
+//Entry function which lanuches an app.
+void main() {
+  //lanuch the Root Widget
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+   String text = "Hello,Flutter";
+  //build renders UI Widget
+  @override
+  Widget build(BuildContext context) {
+    //render hello World Text inside MaterialApp Widget(which is container for material apps)
+    return const MaterialApp(
+      home: Index()
+    );
+  }
+}
+class  Index extends StatelessWidget {
+
+  const Index({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      floatingActionButton:  const FloatingActionButton(onPressed: null,tooltip: 'Add', child: Icon(Icons.add_comment)),
+      body: const Center(child: Text("Welcome to Flutter")),
+    );
+  }
+}
+.............................................................................................
+How to create separate File
+
+lib/index.dart
+import 'package:flutter/material.dart';
+
+class  Index extends StatelessWidget {
+
+  const Index({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      floatingActionButton:  const FloatingActionButton(onPressed: null,tooltip: 'Add', child: Icon(Icons.add_comment)),
+      body: const Center(child: Text("Welcome to Flutter!!!!")),
+    );
+  }
+}
+how to import
+import 'package:flutter/material.dart';
+import './index.dart';
+
+class App extends StatelessWidget {
+   String text = "Hello,Flutter";
+  //build renders UI Widget
+  @override
+  Widget build(BuildContext context) {
+    //render hello World Text inside MaterialApp Widget(which is container for material apps)
+    return const MaterialApp(
+      home: Index()
+    );
+  }
+}
+..............................................................................................
+Scope:
+  - File scope
+  - Module Scope - private scope
+
+
+File Scope:
+import 'package:flutter/material.dart';
+
+class  Index extends StatelessWidget {
+
+  const Index({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      floatingActionButton:  const FloatingActionButton(onPressed: null,tooltip: 'Add', child: Icon(Icons.add_comment)),
+      body: const Center(child: Text("Welcome to Flutter!!!!")),
+    );
+  }
+}
+This class can be shared across the application.
+
+
+suppose if you dont want to share the class across the application , you have to use "_"
+
+import 'package:flutter/material.dart';
+
+class  _Index extends StatelessWidget {
+
+  const _Index({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      floatingActionButton:  const FloatingActionButton(onPressed: null,tooltip: 'Add', child: Icon(Icons.add_comment)),
+      body: const Center(child: Text("Welcome to Flutter!!!!")),
+    );
+  }
+}
+............................................................................................
+					Widgets Category
+............................................................................................
+
+1.Visible category 
+2.Invisible category
+
+
+Row :
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  build(BuildContext context) {
+    return MaterialApp(home: RowWidget());
+  }
+}
+
+class RowWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: const <Widget>[
+      Expanded(
+        child: Text('Deliver features faster', textAlign: TextAlign.center),
+      ),
+      Expanded(
+        child: Text('Craft beautiful UIs', textAlign: TextAlign.center),
+      ),
+      Expanded(
+        child: FittedBox(
+          fit: BoxFit.contain, // otherwise the logo will be tiny
+          child: FlutterLogo(),
+        ),
+      )
+    ]);
+  }
+}
+..............................................................................................
+
+Layouts:
+
+1.Select a Layout.
+
+2.Create a visible widget
+
+3.Add the visible widget to the layout widget
+
+All layout widgets have either of the following:
+
+A child property if they take a single child—for example, Center or Container
+
+A children property if they take a list of widgets—for example, Row, Column, ListView, or Stack.
+
+4. Add the layout widget to the page
+
+.............................................................................................
+
+StateFull Widgets:
+.................
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  final String title;
+
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  //App State
+  int _counter = 10;
+
+  //method which increments
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+..............................................................................................
+
+
+
+
+
+
+
+
+
 
 
 
